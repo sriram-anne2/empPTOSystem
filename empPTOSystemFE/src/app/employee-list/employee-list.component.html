@@ -16,8 +16,9 @@
             <td>{{employee.empId}}</td>
             <td>{{employee.employeeType}}</td>
             <td>{{employee.vacationDays}}</td>
-            <td><button (click)="deleteEmployee(employee.empId)" class="btn btn-danger">Delete</button>
-                <button (click)="employeeDetails(employee.empId)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            <td><button (click)="employeeDetails(employee.empId)" class="btn btn-info">Details</button>
+                <button (click)="workEmployee(employee.empId)" class="btn btn-info" style="margin-left: 10px">Work</button>
+                <button (click)="takeVacay(employee.empId)" class="btn btn-info" style="margin-left: 10px">Take Vacation</button>
             </td>
           </tr>
         </tbody>

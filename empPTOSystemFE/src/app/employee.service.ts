@@ -23,6 +23,16 @@ export class EmployeeService {
     return this.http.post(`${this.baseUrl}`, employee);
   }
 
+  workEmployee(id:string, daysWorked:number) : Observable<Object> {
+    var workUrl = `${this.baseUrl}/work/${id}?daysWorked=` + daysWorked;
+    return this.http.post(workUrl, null);
+  }
+
+  takeVacayEmployee(id:string, vacay:number) : Observable<Object> {
+    var vacayUrl = `${this.baseUrl}/vacation/${id}?vacay=` + vacay;
+    return this.http.post(vacayUrl, null);
+  }
+
   updateEmployee(id: string, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, value);
   }

@@ -24,14 +24,12 @@ export class EmployeeListComponent implements OnInit {
     this.employees = this.employeeService.getEmployeesList();
   }
 
-  deleteEmployee(id: string) {
-    this.employeeService.deleteEmployee(id)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
-        },
-        error => console.log(error));
+  takeVacay(id:string) {
+    this.router.navigate(['vacay', id]);
+  }
+
+  workEmployee(id:string) {
+    this.router.navigate(['work', id]);
   }
 
   employeeDetails(id: string){

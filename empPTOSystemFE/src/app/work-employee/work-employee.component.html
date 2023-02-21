@@ -1,0 +1,15 @@
+<h3>Number of Days Worked for Employee</h3>
+<div style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Employee Id</label>
+      <input type="text" class="form-control" id="empId" required [(ngModel)]="employee.empId" name="empId" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Number of days worked</label>
+      <input type="number" class="form-control" id="daysWorked" name="daysWorked">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

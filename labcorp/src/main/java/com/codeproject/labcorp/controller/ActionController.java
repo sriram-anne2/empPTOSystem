@@ -36,8 +36,8 @@ public class ActionController {
         return employee;
     }
 
-    @PostMapping("/work")
-    public Employee workEmp(@RequestHeader String empId, @RequestHeader int daysWorked) throws Exception {
+    @PostMapping("/work/{empId}")
+    public Employee workEmp(@PathVariable(value = "empId") String empId, @RequestParam int daysWorked) throws Exception {
 
         Employee employee = getEmpById(empId);
         if (daysWorked < 0 || daysWorked > 260){
@@ -48,8 +48,8 @@ public class ActionController {
         return employee;
     }
 
-    @PostMapping("/vacation")
-    public Employee takeVacayEmp(@RequestHeader String empId, @RequestHeader double vacay) throws Exception {
+    @PostMapping("/vacation/{empId}")
+    public Employee takeVacayEmp(@PathVariable(value = "empId") String empId, @RequestParam double vacay) throws Exception {
 
         Employee employee = getEmpById(empId);
         if (vacay > employee.vacationDays){
