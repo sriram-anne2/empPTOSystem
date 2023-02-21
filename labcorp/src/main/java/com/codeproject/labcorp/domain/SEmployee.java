@@ -7,10 +7,10 @@ public class SEmployee extends Employee {
     public SEmployee(){
         super();
         employeeType = EmployeeType.Salaried;
-        VACATION_ACCRUAL = 15;
+        vacationAccrual = 15;
     }
     @Override
     public void work(int numDaysWorked) {
-        vacationDays = VACATION_ACCRUAL * numDaysWorked / 260;
+        vacationDays = vacationAccrual * numDaysWorked / 260;
     }
 }

@@ -8,7 +8,7 @@ public abstract class Employee {
     public String empId;
     public EmployeeType employeeType;
     public double vacationDays;
-    public double VACATION_ACCRUAL;
+    public double vacationAccrual;
 
     Employee(){
         vacationDays = 0;

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Optional;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/emp")
 public class ActionController {
@@ -18,15 +19,27 @@ public class ActionController {
         return listOfEmployees;
     }
 
-    @PostMapping("/work")
-    public Employee workEmp(@RequestHeader String empId, @RequestHeader int daysWorked) throws Exception {
+    @GetMapping("/{empId}")
+    public Employee getEmployeeById(@PathVariable(value = "empId") String empId) throws Exception {
 
-        Optional<Employee> matchingEmp = listOfEmployees.stream().filter(emp -> emp.empId.equals(empId)).findFirst();
+        return getEmpById(empId);
+    }
+
+    private Employee getEmpById(String id) throws Exception {
+
+        Optional<Employee> matchingEmp = listOfEmployees.stream().filter(emp -> emp.empId.equals(id)).findFirst();
         Employee employee = matchingEmp.orElse(null);
         if (employee == null) {
             throw new Exception("No employee found with provided empId");
         }
 
+        return employee;
+    }
+
+    @PostMapping("/work")
+    public Employee workEmp(@RequestHeader String empId, @RequestHeader int daysWorked) throws Exception {
+
+        Employee employee = getEmpById(empId);
         if (daysWorked < 0 || daysWorked > 260){
             throw new Exception("Need to have a valid number of days worked between 0 and 260");
         }
@@ -38,12 +51,7 @@ public class ActionController {
     @PostMapping("/vacation")
     public Employee takeVacayEmp(@RequestHeader String empId, @RequestHeader double vacay) throws Exception {
 
-        Optional<Employee> matchingEmp = listOfEmployees.stream().filter(emp -> emp.empId.equals(empId)).findFirst();
-        Employee employee = matchingEmp.orElse(null);
-        if (employee == null) {
-            throw new Exception("No employee found with provided empId");
-        }
-
+        Employee employee = getEmpById(empId);
         if (vacay > employee.vacationDays){
             throw new Exception("Can not take more days than what employee has accrued");
         }
