@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "ed3f7443-9bab-4589-9fcb-ac1d549ed0ce",
+		"name": "LabCorp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15289906"
+	},
+	"item": [
+		{
+			"name": "Get All Employees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/emp",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"emp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Work Employee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "empId",
+						"value": "OII",
+						"type": "text"
+					},
+					{
+						"key": "daysWorked",
+						"value": "130",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/emp/work",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"emp",
+						"work"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Take Vacay Employee",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "empId",
+						"value": "OII",
+						"type": "text"
+					},
+					{
+						"key": "vacay",
+						"value": "13",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/emp/vacation",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"emp",
+						"vacation"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
